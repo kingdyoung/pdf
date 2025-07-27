@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OpenStudyHub | Free PDFs</title>
+  <link rel="icon" type="image/png" href="favicon.png" /> <!-- Add your real favicon image here -->
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #000000, #1a1a1a);
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+      animation: fadeIn 1s ease;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      color: gold;
+      letter-spacing: 1px;
+    }
+
+    header p {
+      margin-top: 0.5rem;
+      font-size: 1.1rem;
+      color: #aaa;
+      font-style: italic;
+    }
+
+    .pdf-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      width: 100%;
+      max-width: 1000px;
+      animation: slideUp 1s ease;
+    }
+
+    .pdf-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 1.5rem;
+      border-radius: 15px;
+      transition: 0.3s ease;
+    }
+
+    .pdf-card:hover {
+      transform: translateY(-5px);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .pdf-title {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      color: #fff;
+    }
+
+    .download-btn {
+      padding: 0.6rem 1rem;
+      background: royalblue;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: 0.2s;
+    }
+
+    .download-btn:hover {
+      background: #1e90ff;
+    }
+
+    footer {
+      margin-top: 3rem;
+      text-align: center;
+      color: #666;
+      font-size: 0.9rem;
+      padding-bottom: 1rem;
+      animation: fadeIn 1.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      header p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>OPEN STUDYHUB</h1>
+    <p>The Digital Hub for Student Success.</p>
+  </header>
+
+  <section class="pdf-list" id="pdfList">
+    <!-- PDF cards will appear here via JS -->
+  </section>
+
+  <footer>
+    &copy; 2025 OpenStudyHub. All rights reserved.
+  </footer>
+
+  <script>
+    const pdfs = [
+      { title: "EEE201 - Circuit Theory Notes", link: "https://docs.google.com/document/d/10mQaiPX7_lovIFLn6EnvxKVb_SfZkhLg6HfDG9Mk_kA/edit?usp=drive_link" },
+      { title: "CSE110 - Intro to Programming", link: "#" },
+      { title: "ENG101 - Communication Skills", link: "#" },
+      { title: "PHY105 - Mechanics Workbook", link: "#" },
+      { title: "COE108 - Data Structures", link: "#" },
+      { title: "BIO102 - Biology Fundamentals", link: "#" },
+      { title: "CHEM103 - Organic Chemistry", link: "#" },
+      { title: "HIS201 - World History Overview", link: "#" },
+      { title: "ART105 - Introduction to Art", link: "#" }
+    ];
+
+    const container = document.getElementById("pdfList");
+
+    pdfs.forEach((pdf) => {
+      const card = document.createElement("div");
+      card.className = "pdf-card";
+
+      const title = document.createElement("div");
+      title.className = "pdf-title";
+      title.textContent = pdf.title;
+
+      const link = document.createElement("a");
+      link.href = pdf.link;
+      link.textContent = "Download PDF";
+      link.className = "download-btn";
+      link.target = "_blank";
+
+      card.appendChild(title);
+      card.appendChild(link);
+      container.appendChild(card);
+    });
+  </script>
+</body>
+</html>
